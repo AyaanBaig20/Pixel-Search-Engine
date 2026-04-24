@@ -1,13 +1,15 @@
 import React from 'react'
-import {BrowserRouter,Route,Routes} from "react-router-dom"
+import {Routes,Route} from "react-router-dom"
+import Hero from './pages/Hero'
+import Collections from './pages/Collections'
+
 const App = () => {
   return (
-    <div className='text-white bg-gray-900 h-screen w-screen '>
-        <BrowserRouter>
-          <Routes>
-            <Route></Route>
-          </Routes>
-        </BrowserRouter>
+    <div className='text-white bg-gray-950 h-full w-full '>
+        <Routes>
+          <Route path='/' element={<Hero/>}/>
+          <Route path='/collections' element={<Collections/>}/>
+        </Routes>
     </div>
   )
 }
