@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {addCollections} from "../redux/features/collectionsSlices"
+import {useSelector,useDispatch} from "react-redux"
 
 const ResultCard = ({ item }) => {
+  const collection = useSelector((state)=>state.collections)
   const [saved, setSaved] = useState(false);
+  const dispatch = useDispatch()
 
   const handleSave = (item) => {
     setSaved(!saved);
-    const oldData = JSON.parse(localStorage.getItem("collections")) || []
-    const newData = [...oldData,item]
-    localStorage.setItem("collections",JSON.stringify(newData))
+    dispatch(addCollections(item))
+    
   };
-
   return (
     <div className="group bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
       
